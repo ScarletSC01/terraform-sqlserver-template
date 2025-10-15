@@ -7,19 +7,26 @@ pipeline {
  
     environment {
         GCP_CREDENTIALS = credentials('gcp-sa-key')
-        PROJECT_ID = "jenkins-terraform-demo-472920"
+        PROJECT_ID = "<TU_PROJECT_ID>"
     }
  
-    stage('Terraform Action') {
-        steps {
-            withEnv(["GOOGLE_APPLICATION_CREDENTIALS=${GCP_CREDENTIALS}"]) {
-                script {
-                    def autoApprove = (params.ACTION == 'apply' || params.ACTION == 'destroy') ? '-auto-approve' : ''
-                    sh """
-                    terraform ${params.ACTION} ${autoApprove} \
-                      -var='project=${PROJECT_ID}' \
-                      -var='credentials_file=${GCP_CREDENTIALS}'
-                    """
+    stages {
+        stage('Init') {
+            steps {
+                sh 'terraform init -input=false'
+            }
+        }
+        stage('Terraform Action') {
+            steps {
+                withEnv(["GOOGLE_APPLICATION_CREDENTIALS=${GCP_CREDENTIALS}"]) {
+                    script {
+                        def autoApprove = (params.ACTION == 'apply' || params.ACTION == 'destroy') ? '-auto-approve' : ''
+                        sh """
+                        terraform ${params.ACTION} ${autoApprove} \
+                          -var='project=${PROJECT_ID}' \
+                          -var='credentials_file=${GCP_CREDENTIALS}'
+                        """
+                    }
                 }
             }
         }
