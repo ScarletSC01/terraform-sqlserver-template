@@ -19,7 +19,7 @@ resource "google_sql_database_instance" "sqlserver_instance" {
   database_version = "SQLSERVER_2019_STANDARD"
   deletion_protection = false
   settings {
-    tier = "db-custom-2-3840"
+    tier = "db-custom-4-15360"
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
