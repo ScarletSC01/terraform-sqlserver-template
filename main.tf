@@ -16,10 +16,10 @@ provider "google" {
 resource "google_sql_database_instance" "sqlserver_instance" {
   name             = "sqlserver-instance"
   region           = var.region
-  database_version = "SQLSERVER_2022_STANDARD"
+  database_version = "SQLSERVER_2019_STANDARD"
  
   settings {
-    tier = "db-g1-small"
+    tier = "db-custom-4-15360"
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
