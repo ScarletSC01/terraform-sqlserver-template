@@ -7,7 +7,7 @@ pipeline {
  
     environment {
         GCP_CREDENTIALS = credentials('gcp-sa-key')
-        PROJECT_ID = "<TU_PROJECT_ID>"
+        PROJECT_ID = "jenkins-terraform-demo-472920"
     }
  
     stages {
