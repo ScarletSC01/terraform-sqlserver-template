@@ -19,7 +19,7 @@ resource "google_sql_database_instance" "sqlserver_instance" {
   database_version = "SQLSERVER_2022_STANDARD"
  
   settings {
-    tier = "db-custom-2-4096"
+    tier = "db-custom-2-5120"
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
