@@ -14,7 +14,7 @@ provider "google" {
 }
  
 resource "google_sql_database_instance" "sqlserver_instance" {
-  name             = "sqlserver-instance"
+  name             = "sqlserver-instance-cl"
   region           = var.region
   database_version = "SQLSERVER_2017_STANDARD"
   deletion_protection = false
