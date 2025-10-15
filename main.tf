@@ -17,9 +17,9 @@ resource "google_sql_database_instance" "sqlserver_instance" {
   name             = "sqlserver-instance"
   region           = var.region
   database_version = "SQLSERVER_2019_STANDARD"
- 
+  deletion_protection = false
   settings {
-    tier = "db-custom-4-15360"
+    tier = "db-custom-2-3840"
     ip_configuration {
       ipv4_enabled = true
       authorized_networks {
